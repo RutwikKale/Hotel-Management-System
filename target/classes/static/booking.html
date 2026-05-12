@@ -1,0 +1,56 @@
+<div class="booking-container" id="booking">
+    <div class="booking-header">
+        <h1><i class="fas fa-calendar-plus"></i> <em>Confirm Your Bookings <img src="markIcon.jpg" alt="Booking Icon">
+            </em></h1>
+        <p><em>Fill in the details below to book your stay at Grand Stay.</em></p>
+        <link rel="stylesheet" href="style1.css">
+    </div>
+
+    <form id="bookingForm">
+        <div class="input-group">
+            <div class="input-box">
+                <label>Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter Your name " required>
+            </div>
+
+            <div class="input-box">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="example@mail.com" required>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-box">
+                <label>Room Type</label>
+                <select id="roomType">
+                    <option>Standard Suite</option>
+                    <option>Deluxe Room</option>
+                    <option>Presidential Suite</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <label>Number of Guests</label>
+                <input type="number" id="guests" min="1" max="10" value="1">
+            </div>
+            <div class="input-box">
+                <label>Number of Rooms</label>
+                <input type="number" id="rooms" min="1" max="10" value="1">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-box">
+                <label>Check-in Date</label>
+                <input type="date" id="checkin" required>
+            </div>
+            <div class="input-box">
+                <label>Check-out Date</label>
+                <input type="date" id="checkout" required>
+            </div>
+        </div>
+        <div id="totalPriceDisplay" style="font-weight: bold; color: #0A2558; margin: 10px 0;">
+            Estimated Total: ₹0
+        </div>
+
+        <button type="submit" class="btn-book">Confirm Booking</button>
+    </form>
+</div>

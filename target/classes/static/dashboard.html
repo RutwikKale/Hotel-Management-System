@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management | Dashboard</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<script>
+(function() {
+    // Check if the login flag exists in the browser[cite: 7]
+    const authStatus = localStorage.getItem("isLoggedIn");
+
+    if (authStatus !== "true") {
+        // If not logged in, redirect them back to the login page immediately[cite: 8]
+        alert("Access Denied! Please login or register first.");
+        window.location.href = "login.html";
+    }
+})();
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    
+    if (!isLoggedIn) {
+        // If no login data is found, send them back to login page[cite: 7, 8]
+        alert("Please login first!");
+        window.location.href = "login.html";
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const username = localStorage.getItem("username"); // Checks for "username" in storage[cite: 5, 6]
+    const nameField = document.querySelector(".admin_name"); // Looks for class ".admin_name"[cite: 5]
+
+    if (username && nameField) {
+        nameField.innerText = "Welcome, " + username; // Injects the name[cite: 5]
+    }
+});
+</script>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='fas fa-hotel'></i>
+            <span class="logo_name">𝙶𝚛𝚊𝚗𝚍_𝚂𝚝𝚊𝚢</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#" class="active" onclick="loadContent('dashboard')">
+                    <i class='fas fa-grid-alt'></i>
+                    <span class="links_name">𝙳𝚊𝚜𝚑𝚋𝚘𝚊𝚛𝚍</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="loadContent('bookings')">
+                    <i class='fas fa-calendar-check'></i>
+                    <span class="links_name">𝙱𝚘𝚘𝚔𝚒𝚗𝚐𝚜</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="loadContent('my_reservations')">
+                    <i class='fas fa-calendar-check'></i>
+                    <span class="links_name">𝙼𝚢 𝚁𝚎𝚜𝚎𝚛𝚟𝚊𝚝𝚒𝚘𝚗𝚜</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="loadContent('service')">
+                    <i class='fas fa-concierge-bell'></i>
+                    <span class="links_name">𝙲𝚞𝚜𝚝𝚘𝚖𝚎𝚛 𝚂𝚎𝚛𝚟𝚒𝚌𝚎</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="loadContent('contact')">
+                    <i class='fas fa-address-book'></i>
+                    <span class="links_name">𝙲𝚘𝚗𝚝𝚊𝚌𝚝</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="loadContent('queries')">
+                    <i class='fas fa-question-circle'></i>
+                    <span class="links_name">𝙰𝚗𝚢 𝚚𝚞𝚎𝚛𝚒𝚎𝚜</span>
+                </a>
+            </li>
+            <li class="log_out">
+                <a href="javascript:void(0)" onclick="logoutUser()">
+                    <i class='fas fa-sign-out-alt'></i>
+                    <span class="links_name">𝙻𝚘𝚐𝚘𝚞𝚝</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="home-section">
+    <!-- Add this navigation bar at the top of your section -->
+    <nav style="display: flex; justify-content: flex-end; padding: 20px; font-size: 25px; background: #0a3d5800; color: rgb(255, 255, 255);">
+        <div class="profile-details">
+            <span class="admin_name">Loading...</span> <!-- JavaScript will inject name here -->
+            <i class='fas fa-chevron-down'></i>
+        </div>
+    </nav>
+
+    <div class="home-content" id="main-display">
+        <img src="images/PPI.jpg" alt="hotel Icon">
+        <h1> 𝚆𝚎𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 𝚝𝚑𝚎 𝙷𝚘𝚝𝚎𝚕 𝙼𝚊𝚗𝚊𝚐𝚎𝚖𝚎𝚗𝚝 </h1>
+        <h2>~ Select an option from the sidebar to begin.</h2>
+    </div>
+</section>
+
+    <div class="user-bookings">
+    <h2>My <span class="accent-text">Reservations</span></h2>
+    <div id="user-booking-list"></div>
+</div>
+
+    <script src="script1.js"></script>
+</body>
+
+</html>

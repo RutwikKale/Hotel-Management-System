@@ -1,0 +1,51 @@
+<script>
+    async function checkMyStatus() {
+        // 1. Get the username of the person currently logged in
+        // (You should store this in localStorage when they log in)
+        const currentGuest = localStorage.getItem("loggedInUser"); 
+
+        if (!currentGuest) {
+            document.getElementById('booking-status-container').innerHTML = 
+                "<p>Please log in to see your bookings.</p>";
+            return;
+        }
+
+        try {
+            // 2. Fetch only the bookings for THIS specific user
+            const response = await fetch(`http://localhost:8080/api/bookings/user/${currentGuest}`);
+            const myBookings = await response.json();
+
+            const container = document.getElementById('booking-status-container');
+
+            if (myBookings.length === 0) {
+                container.innerHTML = "<p>You have no active bookings.</p>";
+                return;
+            }
+
+            // 3. Generate HTML cards showing the status
+            container.innerHTML = myBookings.map(b => `
+                <div class="status-card" style="border: 1px solid rgba(255,255,255,0.2); padding: 15px; margin: 10px 0; border-radius: 10px;">
+                    <h3>Booking ID: ${b.bookingId}</h3>
+                    <p>Room Type: ${b.roomType}</p>
+                    <p>Status: 
+                        <span class="badge ${b.status.toLowerCase()}" 
+                              style="padding: 5px 10px; border-radius: 5px; font-weight: bold; 
+                              background: ${b.status === 'Accepted' ? '#55efc4' : '#ffeaa7'}; 
+                              color: #2d3436;">
+                            ${b.status}
+                        </span>
+                    </p>
+                    ${b.status === 'Accepted' ? 
+                        '<p style="color: #55efc4; margin-top: 10px;">🎉 Your reservation is confirmed!</p>' : 
+                        '<p style="color: #aaa;">Your request is being reviewed by the admin.</p>'}
+                </div>
+            `).join('');
+
+        } catch (error) {
+            console.error("Error fetching status:", error);
+        }
+    }
+
+    // Call this when the page loads
+    window.onload = checkMyStatus;
+</script>

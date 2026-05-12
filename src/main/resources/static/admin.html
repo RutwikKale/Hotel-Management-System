@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Stay | Creative Admin</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="glass-container">
+        <nav class="glass-sidebar">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <span>Grand Stay</span>
+            </div>
+            <ul class="menu-links">
+                <li onclick="loadAdmin('dashboard')"><i class="fas fa-chart-pie"></i><span>Overview</span></li>
+
+                <li onclick="loadAdmin('reservations')"><i class="fas fa-concierge-bell"></i><span>Reservations</span>
+                </li>
+
+                <li onclick="loadAdmin('queries')"><i class="fas fa-comment-dots"></i><span>Inquiries</span></li>
+
+                <li onclick="logoutAdmin()">
+                    <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-viewport">
+            <header class="top-nav">
+                <h1>Welcome Back, <span class="accent-text">Rutwik</span></h1>
+                <div class="admin-profile">
+                    <img class="img-thumbnail" src="images/admin.png" >
+                    
+                </div>
+            </header>
+
+            <div id="dynamic-content">
+                <div class="stats-grid">
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-wallet"></i>
+                        <h3>Total Revenue</h3>
+                        <p id="total-revenue">₹0.00</p>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Pending Requests</h3>
+                        <p id="pending-count">0</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="admin.js"></script>
+</body>
+
+</html>

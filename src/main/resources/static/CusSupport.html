@@ -1,0 +1,35 @@
+<div class="query-container">
+    <h1><em><img src="images/questionicon.jpg" alt="Question Icon"> Any Queries ~ </em></h1>
+    <p><em>We are here to help you! Submit your queries below.</em></p>
+
+    <form id="queryForm">
+        <div class="input-group">
+            <label>Name</label>
+            <input type="text" id="name" required>
+        </div>
+
+        <div class="input-group">
+            <label>Email</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="input-group">
+            <label>Query Type</label>
+            <select id="queryType">
+                <option>Booking Issue</option>
+                <option>Payment Problem</option>
+                <option>Room Service</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Your Query</label>
+            <textarea id="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">Submit Query</button>
+    </form>
+
+    <p id="responseMsg"></p>
+</div>
